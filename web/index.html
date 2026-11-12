@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-accent="azure">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>汇澜 · 实时汇率换算</title>
+  <link rel="icon" type="image/svg+xml" href="../logo.svg">
+  <link rel="stylesheet" href="css/app.css">
+  <script>
+    /* OTools 宿主桥标记：运行时由 js/bridge.js 接管 window.otools / window.utools / Tauri IPC */
+    window.FX = window.FX || {};
+    window.FX.otoolsHost = window.otools || window.utools || null;
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+            <circle cx="14.5" cy="17" r="9.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+            <path d="M10.5 13.5l4 5 4-5M14.5 18.5V25M11 20.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="28" cy="24" r="7.5" fill="currentColor" opacity=".28"/>
+            <path d="M25.5 21.5l2.5 3.4 2.5-3.4M28 25v3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M6 32.5c3-2.4 6-2.4 9 0s6 2.4 9 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".65"/>
+          </svg>
+        </div>
+        <div class="brand-text"><strong>汇澜</strong><span>RIPPLE RATES</span></div>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="主导航"></nav>
+
+      <div class="sidebar-foot">
+        <div class="net-badge" id="net-badge">
+          <span class="net-dot" id="net-dot"></span>
+          <span id="net-text">正在连接数据源…</span>
+        </div>
+        <span class="side-version" id="side-version">v1.0.0 · 166 币种</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title">
+          <h1 id="page-title">换算</h1>
+          <p id="page-sub">双向实时汇率换算</p>
+        </div>
+        <div class="topbar-actions">
+          <span class="date-chip" id="top-date"></span>
+          <button class="icon-btn" data-action="theme-quick" aria-label="切换主题" title="切换主题"><span id="theme-icon"></span></button>
+          <button class="btn btn-primary btn-sm" id="refresh-btn" data-action="refresh">
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6"/></svg>
+            <span id="refresh-label">刷新</span>
+          </button>
+        </div>
+      </header>
+
+      <div id="banner-slot"></div>
+      <section id="view" class="view"></section>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay-root"></div>
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root"></div>
+
+  <script src="js/util.js"></script>
+  <script src="js/bridge.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/currencies.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/views/convert.js"></script>
+  <script src="js/views/rates.js"></script>
+  <script src="js/views/trend.js"></script>
+  <script src="js/views/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
